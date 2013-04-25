@@ -286,25 +286,25 @@ static NSMutableDictionary *loginControllerCache;
 		targetViewController = self.parentViewController;
 	}
 	
-	if (success && ![SPSession spotifyClientInstalled] /*&& self.didReceiveSignupFlow*/) {
-		// Show client upsell.
-		
-		SPClientUpsellViewController *vc = [[SPClientUpsellViewController alloc] initWithSession:self.session];
-		UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-		nav.navigationBar.barStyle = UIBarStyleBlack;
-		nav.modalPresentationStyle = UIModalPresentationFormSheet;
-		
-		vc.completionBlock = ^() {
-			if (self.dismissesAfterLogin) {
-				[targetViewController dismissModalViewControllerAnimated:YES];
-			}
-			[self.loginDelegate loginViewController:self didCompleteSuccessfully:success];
-		};
-		
-		[targetViewController dismissModalViewControllerAnimated:NO];
-		[targetViewController presentModalViewController:nav animated:NO];
-		return;
-	}
+//	if (success && ![SPSession spotifyClientInstalled] /*&& self.didReceiveSignupFlow*/) {
+//		// Show client upsell.
+//		
+//		SPClientUpsellViewController *vc = [[SPClientUpsellViewController alloc] initWithSession:self.session];
+//		UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+//		nav.navigationBar.barStyle = UIBarStyleBlack;
+//		nav.modalPresentationStyle = UIModalPresentationFormSheet;
+//		
+//		vc.completionBlock = ^() {
+//			if (self.dismissesAfterLogin) {
+//				[targetViewController dismissModalViewControllerAnimated:YES];
+//			}
+//			[self.loginDelegate loginViewController:self didCompleteSuccessfully:success];
+//		};
+//		
+//		[targetViewController dismissModalViewControllerAnimated:NO];
+//		[targetViewController presentModalViewController:nav animated:NO];
+//		return;
+//	}
 	
 	[targetViewController dismissModalViewControllerAnimated:YES];
 	[self.loginDelegate loginViewController:self didCompleteSuccessfully:success];
